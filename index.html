@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 72px;
+      background-color: grey;
+    }
+    .texts {
+      background-color: white;
+      padding: 20px;
+      height: 80px;
+      /* overflow: hidden; */
+      border-radius: 10px;
+      user-select: none;
+      top: 1px;
+      display: block;
+    }
+    .texts span,
+    .texts .word {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      padding: 5px 5px;
+    }
+    .highlight {
+      background-color: rgb(190, 190, 190);
+      border-radius: 5px;
+    }
+    .input-container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .input-container button {
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      padding: 5px 20px;
+    }
+    .input-text {
+      font-size: 2rem;
+      padding: 10px;
+      width: 80%;
+    }
+    .time {
+      font-size: 2rem;
+      color: #fff;
+      background: red;
+      height: 55px;
+      text-align: center;
+      padding: 7px 20px 0 20px;
+      border-radius: 5px;
+      user-select: none;
+    }
+    .incorrect-word-bg {
+      background-color: red;
+    }
+    .incorrect-word {
+      color: red;
+    }
+  </style>
+  <body>
+    <div id="content-texts">
+      <div class="texts">
+        <!-- <span class="word-0 highlight">only</span>
+        <span class="word-1" class="">sea</span>
+        <span class="word-2" class="">start</span>
+        <span class="word-3" class="">walk</span>
+        <span class="word-4" class="">you</span>
+        <span class="word-5" class="">very</span>
+        <span class="word-6" class="">long</span>
+        <span class="word-7" class="">think</span>
+        <span class="word-8" class="">many</span>
+        <span class="word-9" class="">as</span>
+        <span class="word-10" class="">end</span>
+        <span class="word-11" class="">day</span>
+        <span class="word-12" class="">part</span>
+        <span class="word-13" class="">help</span>
+        <span class="word-14" class="">picture</span>
+        <span class="word-15" class="">city</span>
+        <span class="word-16" class="">another</span>
+        <span class="word-17" class="">work</span>
+        <span class="word-18" class="">other</span>
+        <span class="word-19" class="">spell</span>
+        <span class="word-20" class="">said</span>
+        <span class="word-21" class="">other</span>
+        <span class="word-22" class="">but</span> -->
+      </div>
+    </div>
+
+    <div class="input-container">
+      <button onclick="refresh()">
+        <i
+          class="fa fa-refresh"
+          style="font-size: 48px; color: red; cursor: pointer"
+        ></i>
+      </button>
+      <input autofocus class="input-text" type="text" />
+      <span class="time">1: 00</span>
+    </div>
+  </body>
+
+  <script>
+    var words = [
+      "only",
+      "sea",
+      "start",
+      "walk",
+      "you",
+      "very",
+      "long",
+      "think",
+      "many",
+      "as",
+      "end",
+      "day",
+      "part",
+      "help",
+      "picture",
+      "city",
+      "another",
+      "work",
+      "other",
+      "spell",
+      "said",
+      "other",
+      "but",
+      "talk",
+      "is",
+      "how",
+      "keep",
+      "go",
+      "paper",
+      "work",
+      "no",
+      "page",
+      "air",
+      "through",
+      "don't",
+      "far",
+      "this",
+      "people",
+      "how",
+      "an",
+      "old",
+      "idea",
+      "grow",
+      "come",
+      "quickly",
+      "call",
+      "must",
+      "because",
+      "place",
+      "children",
+      "my",
+      "look",
+      "tell",
+      "leave",
+      "were",
+      "page",
+      "one",
+      "side",
+      "make",
+      "state",
+      "together",
+      "well",
+      "set",
+      "tree",
+      "cut",
+      "once",
+      "keep",
+      "stop",
+      "later",
+      "take",
+      "ask",
+      "change",
+      "tell",
+      "time",
+      "close",
+      "example",
+      "way",
+      "each",
+      "can",
+      "must",
+      "same",
+      "it",
+      "mile",
+      "was",
+      "into",
+      "enough",
+      "say",
+      "own",
+      "turn",
+      "quick",
+      "were",
+      "between",
+      "same",
+      "with",
+      "father",
+      "large",
+      "light",
+      "big",
+      "they",
+      "soon",
+      "old",
+      "her",
+      "need",
+      "left",
+      "every",
+      "carry",
+      "sea",
+      "book",
+      "form",
+      "children",
+      "way",
+      "state",
+      "little",
+      "question",
+      "took",
+      "thing",
+      "first",
+      "some",
+      "great",
+      "mean",
+      "air",
+      "add",
+      "high",
+      "than",
+      "one",
+      "also",
+      "kind",
+      "was",
+      "of",
+      "letter",
+      "take",
+      "if",
+      "earth",
+      "from",
+      "hear",
+      "change",
+      "big",
+      "under",
+      "his",
+      "until",
+      "put",
+      "see",
+      "last",
+      "important",
+      "school",
+      "so",
+      "go",
+      "place",
+      "face",
+      "where",
+      "soon",
+      "food",
+      "work",
+      "right",
+      "city",
+      "almost",
+      "very",
+      "our",
+      "right",
+      "use",
+      "something",
+      "long",
+      "four",
+      "use",
+      "man",
+      "will",
+      "move",
+      "turn",
+      "important",
+      "come",
+      "point",
+      "every",
+      "be",
+    ];
+    let speed = 0;
+    const inputText = document.querySelector(".input-text");
+    let indexWord = 0;
+    const textContent = document.querySelector("#content-texts");
+    function randomText(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    function refresh() {
+      createTexts(randomText(words));
+    }
+
+    function createTexts(texts) {
+      const div = document.createElement("div");
+      div.classList = "texts";
+      for (let i = 0; i < texts.length; i++) {
+        let span = document.createElement("span");
+        span.textContent = texts[i];
+        if (i === 0) {
+          span.classList = "word highlight word-" + i;
+        } else {
+          span.classList = "word word-" + i;
+        }
+        div.appendChild(span);
+      }
+      textContent.innerHTML = "";
+      textContent.appendChild(div);
+    }
+    createTexts(words);
+    inputText.addEventListener("input", function (event) {
+      let enterWord = document.querySelector(".word-" + indexWord);
+      if (event.data === " " && inputText.value === " ") {
+        event.preventDefault();
+        inputText.value = "";
+        return;
+      }
+      const isIncorrectWord =
+        enterWord.textContent.substring(0, inputText.value.trim().length) !==
+        inputText.value.trim();
+      console.log(isIncorrectWord);
+      if (isIncorrectWord) {
+        enterWord.classList.add("incorrect-word-bg");
+      } else {
+        enterWord.classList = "word-" + indexWord + " highlight";
+      }
+      if (event.data === " " && inputText.value !== " ") {
+        enterWord.classList = isIncorrectWord
+          ? "word-" + indexWord + " incorrect-word"
+          : "word-" + indexWord;
+        // event.preventDefault();
+        indexWord++;
+        inputText.value = "";
+        enterWord = document.querySelector(".word-" + indexWord);
+        enterWord.classList.add("highlight");
+      }
+    });
+  </script>
+</html>
