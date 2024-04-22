@@ -173,12 +173,22 @@ var words = [
   "every",
   "be",
 ];
-
+let minute = 1;
+let seconds = 60;
+let countdown;
+let startCountdown = false;
 let removeWordStart = 0;
-let correctWord = 1;
+let correctWord = 0;
 const inputText = document.querySelector(".input-text");
 let indexWord = 0;
 const textContain = document.querySelector(".texts");
+let time = document.querySelector(".time");
+time.textContent = minute + " : 00";
+let containTexts = document.querySelector("#contain-texts");
+const containResult = document.querySelector(".contain-result");
+const wpm = document.querySelector(".wpm");
+const accuracy = document.querySelector(".accuracy");
+const netSpeed = document.querySelector(".net-speed");
 function randomText(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -187,10 +197,17 @@ function randomText(array) {
   return array;
 }
 function refresh() {
+  containResult.style.display = "none";
+  containTexts.style.display = "block";
+  startCountdown = false;
+  minute = 1;
+  seconds = 60;
+  time.textContent = minute + " : 00";
+  clearInterval(countdown);
   correctWord = 0;
   indexWord = 0;
   inputText.value = "";
-  inputText.focus(); //= true;
+  inputText.focus();
   createTexts(randomText(words));
 }
 function removeWord(start, end) {
@@ -220,6 +237,10 @@ inputText.addEventListener("input", function (event) {
     event.preventDefault();
     inputText.value = "";
     return;
+  }
+  if (!startCountdown) {
+    startCountdown = true;
+    startCount();
   }
   const isIncorrectWord =
     enterWord.textContent.substring(0, inputText.value.trim().length) !==
@@ -254,19 +275,28 @@ inputText.addEventListener("input", function (event) {
     }
   }
 });
-
-let minute = 2;
-let seconds = 60;
-const countdown = setInterval(function () {
-  document.querySelector(".time").innerHTML = minute + " : " + seconds;
-  if (seconds === 60) {
-    minute--;
-  }
-  seconds--;
-  if (seconds < 0) {
-    if (minute !== 0) {
-      seconds = 60;
+function startCount() {
+  countdown = setInterval(function () {
+    if (seconds === 60 && minute !== 0) {
+      minute--;
     }
-    clearInterval(countdown);
-  }
-}, 1000);
+    document.querySelector(".time").textContent = minute + " : " + seconds;
+    seconds--;
+    if (seconds < 0) {
+      if (minute !== 0) {
+        seconds = 60;
+      } else {
+        clearInterval(countdown);
+        displayResult();
+      }
+    }
+  }, 1000);
+}
+
+function displayResult() {
+  containTexts.style.display = "none";
+  containResult.style.display = "flex";
+  wpm.textContent = indexWord;
+  accuracy.textContent = parseInt((correctWord / indexWord) * 100);
+  netSpeed.textContent = correctWord;
+}

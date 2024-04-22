@@ -1,6 +1,7 @@
 body {
   padding: 72px;
   background-color: rgb(130, 182, 212);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .texts {
   overflow: hidden;
@@ -46,11 +47,50 @@ body {
   text-align: center;
   padding: 7px 20px 0 20px;
   border-radius: 5px;
-  user-select: none;
+  user-select: noe;
 }
 .incorrect-word-bg {
   background-color: red;
 }
 .incorrect-word {
   color: red;
+}
+
+.contain-result {
+  margin: auto;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 500px; /* Adjust width as needed */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.score {
+  display: flex;
+  gap: 40px;
+}
+
+.score span {
+  font-size: 36px;
+}
+
+.accuracy,
+.wpm {
+  color: #007bff; /* Green for good accuracy */
+}
+.net-speed {
+  color: #28a745;
 }

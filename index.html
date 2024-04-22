@@ -11,16 +11,37 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="texts"></div>
-    <div class="input-container">
-      <button onclick="refresh()">
-        <i
-          class="fa fa-refresh"
-          style="font-size: 48px; color: red; cursor: pointer"
-        ></i>
-      </button>
-      <input autofocus class="input-text" type="text" />
-      <span class="time"></span>
+    <div id="contain-texts">
+      <div class="texts"></div>
+      <div class="input-container">
+        <button onclick="refresh()">
+          <i
+            class="fa fa-refresh"
+            style="font-size: 48px; color: red; cursor: pointer"
+          ></i>
+        </button>
+        <input autofocus class="input-text" type="text" />
+        <span class="time"></span>
+      </div>
+    </div>
+    <div class="contain-result">
+      <div class="header">
+        <h2>Your Typing Performance</h2>
+        <div class="score">
+          <div>
+            <p>Typing speed</p>
+            <span class="wpm">82 WPM</span>
+          </div>
+          <div>
+            <p>Accuracy</p>
+            <span class="accuracy">90%</span>
+          </div>
+          <div>
+            <p>Net speed</p>
+            <span class="net-speed">74 WPM</span>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="main.js"></script>
