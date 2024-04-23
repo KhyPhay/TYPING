@@ -189,6 +189,7 @@ const containResult = document.querySelector(".contain-result");
 const wpm = document.querySelector(".wpm");
 const accuracy = document.querySelector(".accuracy");
 const netSpeed = document.querySelector(".net-speed");
+const restart = document.querySelector(".restart");
 function randomText(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -300,3 +301,4 @@ function displayResult() {
   accuracy.textContent = parseInt((correctWord / indexWord) * 100);
   netSpeed.textContent = correctWord;
 }
+restart.addEventListener("click", refresh);

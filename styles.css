@@ -94,3 +94,10 @@ body {
 .net-speed {
   color: #28a745;
 }
+.header button {
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bold;
+  margin-left: 100px;
+  margin-top: 20px;
+}
