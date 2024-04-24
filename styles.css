@@ -25,8 +25,8 @@ body {
 .input-container {
   margin-top: 10px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: space-between;
+  align-items: end;
 }
 .input-container button {
   border-radius: 5px;
@@ -37,7 +37,7 @@ body {
 .input-text {
   font-size: 2rem;
   padding: 10px;
-  width: 80%;
+  width: 50%;
 }
 .time {
   font-size: 2rem;
@@ -100,4 +100,26 @@ body {
   font-weight: bold;
   margin-left: 100px;
   margin-top: 20px;
+}
+
+/* Select */
+.custom-select {
+  width: 250px;
+  /* position: relative; */
+}
+
+select {
+  appearance: none;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.custom-select label {
+  font-size: 1.5rem;
 }

@@ -15,13 +15,24 @@
     <div id="contain-texts">
       <div class="texts"></div>
       <div class="input-container">
+        <div class="custom-select">
+          <label>Choose your time here!</label>
+          <select>
+            <option value="0.5">30 seconds</option>
+            <option value="1">1 minute</option>
+            <option value="2">2 minutes</option>
+            <option value="3">3 minutes</option>
+            <option value="5">5 minutes</option>
+            <option value="10">10 minutes</option>
+          </select>
+        </div>
+        <input autofocus class="input-text" type="text" />
         <button onclick="refresh()">
           <i
             class="fa fa-refresh"
             style="font-size: 48px; color: red; cursor: pointer"
           ></i>
         </button>
-        <input autofocus class="input-text" type="text" />
         <span class="time"></span>
       </div>
     </div>

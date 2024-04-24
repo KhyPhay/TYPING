@@ -1,4 +1,4 @@
-var words = [
+let words = [
   "only",
   "sea",
   "start",
@@ -173,8 +173,14 @@ var words = [
   "every",
   "be",
 ];
-let minute = 1;
-let seconds = 60;
+
+const select = document.querySelector("select");
+let minute = localStorage.getItem("minute");
+if (!minute) {
+  minute = 1;
+  localStorage.setItem("minute", minute);
+}
+let seconds = 59;
 let countdown;
 let startCountdown = false;
 let removeWordStart = 0;
@@ -183,13 +189,27 @@ const inputText = document.querySelector(".input-text");
 let indexWord = 0;
 const textContain = document.querySelector(".texts");
 let time = document.querySelector(".time");
-time.textContent = minute + " : 00";
+time.textContent = minute >= 1 ? minute + " : 00" : "0 : 30";
 let containTexts = document.querySelector("#contain-texts");
 const containResult = document.querySelector(".contain-result");
 const wpm = document.querySelector(".wpm");
 const accuracy = document.querySelector(".accuracy");
 const netSpeed = document.querySelector(".net-speed");
 const restart = document.querySelector(".restart");
+setDefaultOptionByValue(select, minute);
+function setDefaultOptionByValue(selectElement, value) {
+  // Loop through options
+  for (var i = 0; i < selectElement.options.length; i++) {
+    // Check if the option value matches the desired value
+    if (selectElement.options[i].value === value) {
+      // Set the selected property of this option to true
+      selectElement.options[i].selected = true;
+      // Exit the loop since we found the matching option
+      break;
+    }
+  }
+}
+
 function randomText(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -198,12 +218,13 @@ function randomText(array) {
   return array;
 }
 function refresh() {
+  select.disabled = false;
   containResult.style.display = "none";
   containTexts.style.display = "block";
   startCountdown = false;
-  minute = 1;
-  seconds = 60;
-  time.textContent = minute + " : 00";
+  minute = localStorage.getItem("minute");
+  seconds = minute === 0.5 ? 29 : 59;
+  time.textContent = minute >= 1 ? minute + " : 00" : "0 : 30";
   clearInterval(countdown);
   correctWord = 0;
   indexWord = 0;
@@ -243,6 +264,7 @@ inputText.addEventListener("input", function (event) {
     startCountdown = true;
     startCount();
   }
+  select.disabled = true;
   const isIncorrectWord =
     enterWord.textContent.substring(0, inputText.value.trim().length) !==
     inputText.value.trim();
@@ -278,16 +300,22 @@ inputText.addEventListener("input", function (event) {
 });
 function startCount() {
   countdown = setInterval(function () {
-    if (seconds === 60 && minute !== 0) {
-      minute--;
+    if (seconds === 59 && minute !== 0) {
+      if (minute == 0.5) {
+        minute = 0;
+        seconds = 29;
+      } else {
+        minute--;
+      }
     }
     document.querySelector(".time").textContent = minute + " : " + seconds;
     seconds--;
     if (seconds < 0) {
       if (minute !== 0) {
-        seconds = 60;
+        seconds = 59;
       } else {
         clearInterval(countdown);
+        select.disabled = false;
         displayResult();
       }
     }
@@ -297,8 +325,15 @@ function startCount() {
 function displayResult() {
   containTexts.style.display = "none";
   containResult.style.display = "flex";
-  wpm.textContent = indexWord;
+  const originalMinutes = localStorage.getItem("minute");
+  wpm.textContent = parseInt(indexWord / originalMinutes);
   accuracy.textContent = parseInt((correctWord / indexWord) * 100);
-  netSpeed.textContent = correctWord;
+  netSpeed.textContent = parseInt(correctWord / originalMinutes);
 }
 restart.addEventListener("click", refresh);
+
+select.addEventListener("input", function (e) {
+  minute = e.target.value;
+  time.textContent = minute >= 1 ? minute + " : 00" : "0 : 30";
+  localStorage.setItem("minute", minute);
+});
