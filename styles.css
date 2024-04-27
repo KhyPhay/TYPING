@@ -1,15 +1,27 @@
-/* * {
-  background-image: url("background.avif");
-} */
+.none-white {
+  background: #fff;
+}
+.bg-green {
+  background-color: #28a745;
+}
+.bg-grey {
+  background: grey;
+}
+
 body {
-  /* background-image: url("background.jpg"); */
-  background-image: url("background.jpg");
+  box-sizing: border-box;
+  position: relative;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-top: 10px;
+  min-height: 100vh;
   background-size: cover;
-  padding: 72px;
-  background-color: rgb(130, 182, 212);
   background-repeat: no-repeat;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  height: 100%;
+  background-image: url("background.jpg");
+}
+#contain-texts {
+  width: 80%;
+  margin: auto;
 }
 .texts {
   overflow: hidden;
@@ -21,7 +33,7 @@ body {
   border: 1px solid #550035;
 }
 .texts span {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 3.2rem;
   padding: 5px 5px;
   display: inline-block;
@@ -33,29 +45,29 @@ body {
 .input-container {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
 }
 .input-container button {
+  margin: 0 10px;
+  background: none;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  padding: 5px 20px;
 }
 .input-text {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 10px;
   width: 50%;
 }
 .time {
   font-size: 2rem;
   color: #fff;
-  background: red;
   height: 55px;
   text-align: center;
   padding: 7px 20px 0 20px;
   border-radius: 5px;
-  user-select: noe;
+  user-select: none;
 }
 .incorrect-word-bg {
   background-color: red;
@@ -65,13 +77,14 @@ body {
 }
 
 .contain-result {
+  box-sizing: border-box;
   margin: auto;
   margin-top: 30px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  width: 500px; /* Adjust width as needed */
+  width: 500px;
   display: none;
   justify-content: center;
   align-items: center;
@@ -102,32 +115,94 @@ body {
 .net-speed {
   color: #28a745;
 }
+.contain-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .header button {
+  color: #fff;
   cursor: pointer;
-  padding: 10px;
+  padding: 15px;
   font-weight: bold;
-  margin-left: 100px;
   margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+}
+.container {
+  background-color: #fff;
+  margin: auto;
+  padding: 30px;
+  position: absolute;
+  top: 40%; /* Position child elements vertically centered */
+  left: 50%; /* Position child elements horizontally centered */
+  transform: translate(-50%, -50%); /* Center them precisely */
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  /* width: 90%; */
+  margin-top: 100px;
 }
 
-/* Select */
+.logo {
+  margin-bottom: 20px;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .custom-select {
-  width: 250px;
-  /* position: relative; */
+  flex: 1;
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
 select {
-  appearance: none;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 16px;
   padding: 10px;
   background-color: #fff;
   border: 1px solid #caced1;
-  border-radius: 0.25rem;
+  border-radius: 5px;
   color: #000;
   cursor: pointer;
 }
 
-.custom-select label {
-  font-size: 1.5rem;
+#button-start {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#button-start:hover {
+  background-color: #3e8e41;
 }

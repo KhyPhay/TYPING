@@ -1,4 +1,5 @@
-let words = [
+let originalWord = [
+  "easy",
   "only",
   "sea",
   "start",
@@ -174,8 +175,385 @@ let words = [
   "be",
 ];
 
-const select = document.querySelector("select");
+const medium = [
+  "medium",
+  "conquest",
+  "autumnal",
+  "distinctive",
+  "insurgent",
+  "illusion",
+  "compliant",
+  "narrative",
+  "expedition",
+  "adversity",
+  "vibrant",
+  "intrepid",
+  "sanctuary",
+  "infamous",
+  "formulate",
+  "resilient",
+  "redemption",
+  "radiance",
+  "magnitude",
+  "endeavor",
+  "reverence",
+  "vibrant",
+  "impression",
+  "integrity",
+  "intricate",
+  "serenity",
+  "precarious",
+  "vibrant",
+  "illuminate",
+  "reckoning",
+  "intrigue",
+  "vigilant",
+  "renaissance",
+  "exquisite",
+  "convergence",
+  "vitality",
+  "vibrant",
+  "momentum",
+  "illuminate",
+  "endeavor",
+  "resilient",
+  "integrity",
+  "vibrant",
+  "impression",
+  "redemption",
+  "reckoning",
+  "intrigue",
+  "resilient",
+  "sanctuary",
+  "vibrant",
+  "intricate",
+  "illuminate",
+  "integrity",
+  "exquisite",
+  "convergence",
+  "renaissance",
+  "illusion",
+  "vibrant",
+  "redemption",
+  "magnitude",
+  "integrity",
+  "intrigue",
+  "reverence",
+  "vibrant",
+  "endeavor",
+  "illuminate",
+  "resilient",
+  "vigilant",
+  "exquisite",
+  "convergence",
+  "vibrant",
+  "momentum",
+  "illuminate",
+  "intricate",
+  "redemption",
+  "magnitude",
+  "integrity",
+  "illusion",
+  "vibrant",
+  "renaissance",
+  "endeavor",
+  "serenity",
+  "intrigue",
+  "sanctuary",
+  "resilient",
+  "vibrant",
+  "illuminate",
+  "redemption",
+  "reckoning",
+  "intricate",
+  "exquisite",
+  "convergence",
+  "vitality",
+  "vibrant",
+  "illuminate",
+  "magnitude",
+  "integrity",
+  "intrigue",
+  "reverence",
+  "vibrant",
+  "endeavor",
+  "redemption",
+  "resilient",
+  "vigilant",
+  "exquisite",
+  "convergence",
+  "renaissance",
+  "illusion",
+  "vibrant",
+  "momentum",
+  "illuminate",
+  "intricate",
+  "redemption",
+  "magnitude",
+  "integrity",
+  "illusion",
+  "vibrant",
+  "renaissance",
+  "endeavor",
+  "serenity",
+  "intrigue",
+  "sanctuary",
+  "resilient",
+  "vibrant",
+  "illuminate",
+  "redemption",
+  "reckoning",
+  "intricate",
+  "exquisite",
+  "convergence",
+  "vitality",
+  "vibrant",
+  "illuminate",
+  "magnitude",
+  "integrity",
+  "intrigue",
+  "reverence",
+  "vibrant",
+  "endeavor",
+  "redemption",
+  "resilient",
+  "vigilant",
+  "exquisite",
+  "convergence",
+  "renaissance",
+  "illusion",
+  "vibrant",
+  "momentum",
+  "illuminate",
+  "intricate",
+  "redemption",
+  "magnitude",
+  "integrity",
+  "illusion",
+  "vibrant",
+  "renaissance",
+  "endeavor",
+  "serenity",
+  "intrigue",
+  "sanctuary",
+  "resilient",
+  "vibrant",
+  "illuminate",
+];
+
+const hard = [
+  "SCHOOL",
+  "however",
+  "look",
+  "govern",
+  "a, house",
+  "consider",
+  "play",
+  "but",
+  "Ismall",
+  "come",
+  "ahead",
+  "look",
+  "only",
+  "just",
+  "go",
+  "5",
+  "leads",
+  "see,",
+  "still",
+  "again",
+  "write",
+  "work",
+  "consider",
+  "-group",
+  "during,",
+  "what",
+  "but!",
+  "Any",
+  "fact",
+  "general?",
+  "where",
+  "see,",
+  "use",
+  "tell,",
+  "into",
+  "get",
+  "4206",
+  "on",
+  "early,",
+  "even",
+  "leads",
+  "still",
+  "use",
+  "from",
+  "person",
+  "who",
+  "there",
+  "435",
+  "7",
+  "as",
+  "feel",
+  "nation",
+  "become",
+  "new",
+  "431",
+  "with",
+  "about",
+  "after",
+  "open",
+  "stand,",
+  "between",
+  "great.",
+  "Work",
+  "much",
+  "part",
+  "all",
+  "house.",
+  "Program",
+  "shouldn't",
+  "face",
+  "in,",
+  "as",
+  "write",
+  "under.",
+  "Work",
+  "4968",
+  "throughout.",
+  "Run",
+  "before",
+  "first",
+  "might",
+  "by",
+  "possible",
+  "wouldn't",
+  "221",
+  "they",
+  "write",
+  "can",
+  "most:",
+  "say,",
+  "51",
+  "school,",
+  "day.",
+  "2024",
+  "Hello",
+  "text",
+  "42",
+  "OpenAI",
+  "7.5",
+  "World",
+  "1001",
+  "JavaScript",
+  "3.14",
+  "Programming",
+  "777",
+  "Examples",
+  "2024",
+  "Numbers",
+  "1234567890",
+  "Array",
+  "9000",
+  "Computer",
+  "55555",
+  "AI",
+  "technology",
+  "innovation",
+  "discovery",
+  "data",
+  "algorithms",
+  "Internet",
+  "InternetofThings",
+  "cybersecurity",
+  "encryption",
+  "firewalls",
+  "authentication",
+  "quantumcomputing",
+  "drugdiscovery",
+  "climatemodeling",
+  "virtualreality",
+  "autonomousvehicles",
+  "imagination",
+  "digitallandscape",
+  "threatlandscape",
+  "sensitiveinformation",
+  "privacy",
+  "digitalrealm",
+  "digitalage",
+  "modernlife",
+  "digitalveins",
+  "digitalrealm",
+  "technologicaladvancement",
+  "society",
+  "communication",
+  "socialmedia",
+  "developers",
+  "software",
+  "mobileapplications",
+  "digitalboundaries",
+  "virtualtownsquares",
+  "humanity",
+  "creativity",
+  "ingenuity",
+  "progress",
+  "interconnectedness",
+  "languageofcode",
+  "universaltongue",
+  "software",
+  "mobileapplications",
+  "financialmarkets",
+  "boundaries",
+  "future",
+  "dream",
+  "reality",
+  "robotics",
+  "nanotechnology",
+  "biotechnology",
+  "artificialintelligence",
+  "machinelearning",
+  "bigdata",
+  "cloudcomputing",
+  "blockchain",
+  "smartcities",
+  "augmentedreality",
+  "wearabletechnology",
+  "biometrics",
+  "genomics",
+  "spaceexploration",
+  "sustainability",
+  "greentechnology",
+  "renewableenergy",
+  "bioinformatics",
+  "Internetsecurity",
+  "dataanalytics",
+  "digitaltransformation",
+  "quantumcryptography",
+  "internetgovernance",
+  "e-commerce",
+  "digitalmarketing",
+  "informationtechnology",
+  "networksecurity",
+  "dataprivacy",
+  "cryptocurrency",
+  "edgecomputing",
+  "3Dprinting",
+  "cyberwarfare",
+];
+
+let words;
+const container = document.querySelector(".container");
+const buttonStart = document.querySelector("#button-start");
+const chooseTime = document.querySelector("#choose-time");
+const chooseLevel = document.querySelector("#choose-level");
 let minute = localStorage.getItem("minute");
+let level = localStorage.getItem("level");
+
+if (level === "medium") {
+  words = medium;
+} else if (level === "hard") {
+  words = hard;
+} else {
+  words = originalWord;
+}
 if (!minute) {
   minute = 1;
   localStorage.setItem("minute", minute);
@@ -195,8 +573,20 @@ const containResult = document.querySelector(".contain-result");
 const wpm = document.querySelector(".wpm");
 const accuracy = document.querySelector(".accuracy");
 const netSpeed = document.querySelector(".net-speed");
-const restart = document.querySelector(".restart");
-setDefaultOptionByValue(select, minute);
+containTexts.style.display = "none";
+
+buttonStart.addEventListener("click", () => {
+  containTexts.style.display = "block";
+  container.style.display = "none";
+  refresh();
+});
+setDefaultOptionByValue(chooseTime, minute);
+setDefaultOptionByValue(chooseLevel, level);
+function backHomePage() {
+  refresh();
+  containTexts.style.display = "none";
+  container.style.display = "block";
+}
 function setDefaultOptionByValue(selectElement, value) {
   // Loop through options
   for (var i = 0; i < selectElement.options.length; i++) {
@@ -218,7 +608,8 @@ function randomText(array) {
   return array;
 }
 function refresh() {
-  select.disabled = false;
+  chooseTime.disabled = false;
+  removeWordStart = 0;
   containResult.style.display = "none";
   containTexts.style.display = "block";
   startCountdown = false;
@@ -264,7 +655,7 @@ inputText.addEventListener("input", function (event) {
     startCountdown = true;
     startCount();
   }
-  select.disabled = true;
+  chooseTime.disabled = true;
   const isIncorrectWord =
     enterWord.textContent.substring(0, inputText.value.trim().length) !==
     inputText.value.trim();
@@ -315,7 +706,7 @@ function startCount() {
         seconds = 59;
       } else {
         clearInterval(countdown);
-        select.disabled = false;
+        chooseTime.disabled = false;
         displayResult();
       }
     }
@@ -330,10 +721,19 @@ function displayResult() {
   accuracy.textContent = parseInt((correctWord / indexWord) * 100);
   netSpeed.textContent = parseInt(correctWord / originalMinutes);
 }
-restart.addEventListener("click", refresh);
 
-select.addEventListener("input", function (e) {
+chooseTime.addEventListener("input", function (e) {
   minute = e.target.value;
   time.textContent = minute >= 1 ? minute + " : 00" : "0 : 30";
   localStorage.setItem("minute", minute);
+});
+chooseLevel.addEventListener("input", function (e) {
+  localStorage.setItem("level", e.target.value);
+  if (e.target.value === "medium") {
+    words = medium;
+  } else if (e.target.value === "hard") {
+    words = hard;
+  } else {
+    words = originalWord;
+  }
 });

@@ -12,12 +12,16 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="contain-texts">
-      <div class="texts"></div>
-      <div class="input-container">
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Typing Test Logo" />
+      </div>
+      <h1>Check your typing skills in a minute</h1>
+      <p>Type away to join 150+ million test takers!</p>
+      <div class="test-info">
         <div class="custom-select">
-          <label>Choose your time here!</label>
-          <select>
+          <label>Choose your time:</label>
+          <select id="choose-time">
             <option value="0.5">30 seconds</option>
             <option value="1">1 minute</option>
             <option value="2">2 minutes</option>
@@ -26,14 +30,36 @@
             <option value="10">10 minutes</option>
           </select>
         </div>
-        <input autofocus class="input-text" type="text" />
-        <button onclick="refresh()">
+        <div class="custom-select">
+          <label>Choose your difficulty:</label>
+          <select id="choose-level">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+      </div>
+      <button id="button-start">START TEST</button>
+    </div>
+    <div id="contain-texts">
+      <div class="texts"></div>
+      <div class="input-container">
+        <button onclick="backHomePage()" class="bg-grey">
           <i
-            class="fa fa-refresh"
-            style="font-size: 48px; color: red; cursor: pointer"
+            class="fa fa-backward"
+            style="font-size: 32px; cursor: pointer; color: grey"
           ></i>
         </button>
-        <span class="time"></span>
+        <input autofocus class="input-text" type="text" />
+        <div class="time-refresh">
+          <button onclick="refresh()">
+            <i
+              class="fa fa-refresh"
+              style="font-size: 32px; color: rgb(31, 125, 172); cursor: pointer"
+            ></i>
+          </button>
+          <span class="time"></span>
+        </div>
       </div>
     </div>
     <div class="contain-result">
@@ -53,7 +79,15 @@
             <span class="net-speed"></span>
           </div>
         </div>
-        <button class="restart">RESTART</button>
+        <div class="contain-button">
+          <button onclick="backHomePage()" class="reset bg-grey">
+            <i class="fa fa-home" style="font-size: 16px"></i>
+            RESET AGAIN
+          </button>
+          <button onclick="refresh()" class="restart bg-green">
+            RETAKE TEST
+          </button>
+        </div>
       </div>
     </div>
   </body>
