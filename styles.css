@@ -115,6 +115,9 @@ body {
 .net-speed {
   color: #28a745;
 }
+.hightest-speed {
+  color: #28a745;
+}
 .contain-button {
   display: flex;
   justify-content: space-around;

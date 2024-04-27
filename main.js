@@ -540,13 +540,19 @@ const hard = [
 ];
 
 let words;
+
 const container = document.querySelector(".container");
 const buttonStart = document.querySelector("#button-start");
 const chooseTime = document.querySelector("#choose-time");
 const chooseLevel = document.querySelector("#choose-level");
+const highSpeed = localStorage.getItem("highSpeed");
+let hightestSpeed = document.querySelector(".hightest-speed");
 let minute = localStorage.getItem("minute");
 let level = localStorage.getItem("level");
 
+if (highSpeed) {
+  hightestSpeed.textContent = "Your hightest speed is " + highSpeed + "  WPD";
+}
 if (level === "medium") {
   words = medium;
 } else if (level === "hard") {
@@ -720,6 +726,11 @@ function displayResult() {
   wpm.textContent = parseInt(indexWord / originalMinutes);
   accuracy.textContent = parseInt((correctWord / indexWord) * 100);
   netSpeed.textContent = parseInt(correctWord / originalMinutes);
+  if (netSpeed.textContent > localStorage.getItem("highSpeed")) {
+    localStorage.setItem("highSpeed", netSpeed.textContent);
+    hightestSpeed.textContent =
+      "Your hightest speed is " + netSpeed.textContent + "  WPD";
+  }
 }
 
 chooseTime.addEventListener("input", function (e) {
